@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_roles', function (Blueprint $table) {
-            $table->id();
-            $table->string('role')->unique();
-            $table->timestamps();
-        });
+        DB::table('user_roles')->insert([
+    ['id' => 1, 'role' => 'Admin', 'created_at' => now(), 'updated_at' => now()],
+    ['id' => 2, 'role' => 'Teacher', 'created_at' => now(), 'updated_at' => now()],
+    ['id' => 3, 'role' => 'Student', 'created_at' => now(), 'updated_at' => now()],
+]);
+
+    
     }
 
     /**
