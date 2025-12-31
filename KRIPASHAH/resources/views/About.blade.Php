@@ -11,16 +11,12 @@
 </head>
 <body class="h-full flex flex-col bg-gray-50">
 
-    <!-- Header -->
+    @include('header')<!-- Header -->
     <header class="header bg-white shadow-sm">
         <div class="container flex justify-between items-center py-4">
             <h1 class="logo text-3xl font-bold text-indigo-600">EduAdmin</h1>
-            <div class="auth-links">
-                <a href="index.html" class="btn btn-outline">Home</a>
-                <a href="about.html" class="btn btn-primary ml-4">About</a>
-            </div>
         </div>
-    </header></br></br>
+    </header></div>
 
     <!-- Hero Section -->
     <section class="hero py-12 md:py-20">
@@ -98,7 +94,7 @@
         </div>
     </section></br></br>
 
-    <!-- Footer -->
+     @include('Footer')<!-- Footer -->
     <footer class="footer bg-white border-t border-gray-200 mt-auto">
         <div class="container text-center py-8">
             <p class="footer-text text-gray-600">

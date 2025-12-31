@@ -22,18 +22,19 @@ Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])
 
 require __DIR__.'/auth.php';
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
-});
-
-Route::get('/about', function () {
-    return view('About');
-});
-
-Route::get('/contact', function () {
-    return view('Contact');
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
-    return view('Dashboard');
-});
+    return view('dashboard');
+})->middleware('auth')->name('dashboard');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+

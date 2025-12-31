@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="Style.css">
 </head>
 <body>
+    @include('header')
     <div class="container">
         <div class="main-content">
             <h1>Contact Us</h1>
@@ -72,5 +73,9 @@
             <p>Call us or fill out the form. We're here to assist you!</p>
         </div>
     </div>
+
+    <!-- Footer placed correctly: just before closing </body> -->
+    
+
 </body>
-</html>
+</html> @include('footer')

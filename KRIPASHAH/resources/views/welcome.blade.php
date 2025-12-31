@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduAdmin - School Management System</title>
+    <title>Admin - School Management System</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Style.css">
 </head>
 <body class="h-full flex flex-col bg-gray-50">
 
-    <!-- Header -->
+    @include('header')<!-- Header -->
     <header class="header bg-white shadow-sm">
         <div class="container flex justify-between items-center py-4">
-            <h1 class="logo text-3xl font-bold text-indigo-600">EduAdmin</h1>
+            <h1 class="logo text-3xl font-bold text-indigo-600">Admin</h1>
             <div class="auth-links">
                 <a href="#" class="btn btn-outline">Log in</a>
                 <a href="#" class="btn btn-primary ml-4">Get Started</a>
@@ -24,7 +24,7 @@
     <section class="hero py-12 md:py-20 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
         <div class="container grid-hero items-center">
             <div class="hero-text text-center md:text-left max-w-2xl mx-auto md:mx-0">
-                <h1 class="title text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">Welcome to EduAdmin</h1>
+                <h1 class="title text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">Welcome to Admin</h1>
                 <p class="description text-lg md:text-xl text-gray-600 mt-6">
                     A simple and powerful school management system to handle students, teachers, classes, attendance, grades, and more — all in one place.
                 </p>
@@ -76,7 +76,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    @include('Footer')<!-- Header --><!-- Footer -->
     <footer class="footer bg-white border-t border-gray-200 mt-auto">
         <div class="container text-center py-8">
             <p class="footer-text text-gray-600">

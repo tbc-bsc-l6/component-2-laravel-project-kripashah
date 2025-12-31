@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clinic Dashboard</title>
-    <link rel="stylesheet" href="Style.css">
+    <title>Clinic Dashboard - ClinicHub</title>
+
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('css/Style.css') }}">
 </head>
 <body>
+    <!-- Header -->
+    @include('header')
+
     <div class="dashboard-wrapper">
         <!-- Sidebar -->
         <aside class="sidebar">
@@ -85,5 +92,9 @@
             </section>
         </main>
     </div>
+
+    <!-- Footer - NOW CORRECTLY PLACED INSIDE <body> and BEFORE </body> -->
+    @include('footer')
+
 </body>
 </html>
