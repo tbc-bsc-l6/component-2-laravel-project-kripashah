@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::table('user_roles')->insert([
-    ['id' => 1, 'role' => 'Admin', 'created_at' => now(), 'updated_at' => now()],
-    ['id' => 2, 'role' => 'Teacher', 'created_at' => now(), 'updated_at' => now()],
-    ['id' => 3, 'role' => 'Student', 'created_at' => now(), 'updated_at' => now()],
-]);
-
-    
+        Schema::create('roles', function (Blueprint $table) {
+        $table->id();
+        $table->string('name'); // admin, teacher, student, old_student
+        $table->timestamps();
+        });
     }
 
     /**
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_roles');
+        Schema::dropIfExists('roles');
     }
 };
