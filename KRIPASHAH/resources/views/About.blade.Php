@@ -94,14 +94,7 @@
         </div>
     </section></br></br>
 
-     @include('Footer')<!-- Footer -->
-    <footer class="footer bg-white border-t border-gray-200 mt-auto">
-        <div class="container text-center py-8">
-            <p class="footer-text text-gray-600">
-                © 2025 EduAdmin. All rights reserved. Made for schools and educators.
-            </p>
-        </div>
-    </footer>
+     @include('Footer')
 
 </body>
 </html>
