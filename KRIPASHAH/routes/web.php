@@ -17,10 +17,45 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
-    Route::get('/dashboard', [AdminController::class,'dashboard'])->name('admin.dashboard');
-    Route::get('/modules', [AdminController::class,'modules'])->name('admin.modules');
+Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
+
+    // Admin Dashboard
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])
+        ->name('admin.dashboard');
+
+    // Modules
+    Route::get('/modules', [AdminController::class, 'modules'])
+        ->name('admin.modules');
+
+    Route::post('/modules', [AdminController::class, 'storeModule'])
+        ->name('admin.modules.store');
+
+    Route::get('/modules/toggle/{id}', [AdminController::class, 'toggleModule'])
+        ->name('admin.modules.toggle');
+
+    // Teachers
+    Route::get('/teachers', [AdminController::class, 'teachers'])
+        ->name('admin.teachers');
+
+    Route::post('/teachers', [AdminController::class, 'storeTeacher'])
+        ->name('admin.teachers.store');
+
+    Route::delete('/teachers/{id}', [AdminController::class, 'destroyTeacher'])
+        ->name('admin.teachers.destroy');
+
+    // Assign teacher to module
+    Route::post('/assign-teacher', [AdminController::class, 'assignTeacher'])
+        ->name('admin.assign.teacher');
+
+    // Remove student from module
+    Route::delete('/remove-student/{user}/{module}', [AdminController::class, 'removeStudent'])
+        ->name('admin.remove.student');
+
+    // Change user role
+    Route::post('/user/{id}/role', [AdminController::class, 'changeRole'])
+        ->name('admin.user.role');
 });
+
 
 
 require __DIR__.'/auth.php';
@@ -44,3 +79,5 @@ Route::get('/contact', function () {
 Route::get('/teacher', function () {
     return view('teacher_dashboard');
 })->name('teacher');
+
+
