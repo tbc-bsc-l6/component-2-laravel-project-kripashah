@@ -17,8 +17,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])
-    ->middleware(['auth', 'admin']);
+Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
+    Route::get('/dashboard', [AdminController::class,'dashboard'])->name('admin.dashboard');
+    Route::get('/modules', [AdminController::class,'modules'])->name('admin.modules');
+});
+
 
 require __DIR__.'/auth.php';
 
@@ -38,3 +41,6 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
+Route::get('/teacher', function () {
+    return view('teacher_dashboard');
+})->name('teacher');
