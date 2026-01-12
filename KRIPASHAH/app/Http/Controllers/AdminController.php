@@ -27,9 +27,11 @@ class AdminController extends Controller
     }
 
     // TEACHERS
-    public function teachers() {
-        return view('admin.teachers',['teachers'=>Teacher::all()]);
-    }
+    public function teachers()
+{
+    $teachers = \App\Models\Teacher::all();
+    return view('teacher_dashboard', compact('teachers'));
+}
 
     public function storeTeacher(Request $r) {
         Teacher::create($r->all());

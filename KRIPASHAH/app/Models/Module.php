@@ -7,17 +7,17 @@ use App\Models\User;
 
 class Module extends Model
 {
-    protected $fillable = [
-        'name',
-        'code',
-        'available',
-    ];
+    protected $fillable = ['name', 'code', 'available'];
 
-    /**
-     * Students enrolled in this module
-     */
     public function students()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)
+                    ->withPivot('status', 'completed_at')
+                    ->withTimestamps();
+    }
+
+    public function teachers()
+    {
+        return $this->belongsToMany(\App\Models\Teacher::class, 'assignments');
     }
 }
