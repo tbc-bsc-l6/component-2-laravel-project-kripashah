@@ -14,7 +14,7 @@
     @include('header')<!-- Header -->
     <header class="header bg-white shadow-sm">
         <div class="container flex justify-between items-center py-4">
-            <h1 class="logo text-3xl font-bold text-indigo-600">EduAdmin</h1>
+            <h1 class="logo text-3xl font-bold text-indigo-600">Admin</h1>
         </div>
     </header></div>
 
@@ -22,7 +22,7 @@
     <section class="hero py-12 md:py-20">
         <div class="container grid-hero">
             <div class="hero-text">
-                <h1 class="title text-4xl md:text-5xl">About EduAdmin</h1>
+                <h1 class="title text-4xl md:text-5xl">About Admin</h1>
                 <p class="description text-lg md:text-xl text-gray-600 mt-6 max-w-lg">
                     We are passionate about transforming school administration with simple, modern, and powerful tools designed for educators and institutions.
                 </p>

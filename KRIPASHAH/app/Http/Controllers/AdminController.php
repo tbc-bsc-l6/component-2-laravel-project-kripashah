@@ -1,9 +1,11 @@
 <?php
 
-use App\Models\{User,Module,Teacher,Assignment};
+namespace App\Http\Controllers;  // <-- Must be this namespace
+
+use App\Models\{User, Module, Teacher, Assignment};
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class AdminController extends Controller   // <-- Extends base Controller
 {
     public function dashboard() {
         return view('admin.dashboard');
@@ -27,11 +29,10 @@ class AdminController extends Controller
     }
 
     // TEACHERS
-    public function teachers()
-{
-    $teachers = \App\Models\Teacher::all();
-    return view('teacher_dashboard', compact('teachers'));
-}
+    public function teachers() {
+        $teachers = Teacher::all();
+        return view('admin.teachers', compact('teachers'));
+    }
 
     public function storeTeacher(Request $r) {
         Teacher::create($r->all());
@@ -50,13 +51,13 @@ class AdminController extends Controller
     }
 
     // REMOVE STUDENT
-    public function removeStudent($userId,$moduleId) {
+    public function removeStudent($userId, $moduleId) {
         Module::find($moduleId)->students()->detach($userId);
         return back();
     }
 
     // CHANGE ROLE
-    public function changeRole(Request $r,$id) {
+    public function changeRole(Request $r, $id) {
         User::whereId($id)->update(['role'=>$r->role]);
         return back();
     }

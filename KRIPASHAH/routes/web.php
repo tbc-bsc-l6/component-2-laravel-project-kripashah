@@ -6,18 +6,19 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
-// ---------------- PUBLIC ROUTES ----------------
+
 Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+    return view('welcome'); // Make sure the file name is exact: welcome.blade.php
+});
 
 Route::get('/about', function () {
     return view('about');
-})->name('about');
+});
 
 Route::get('/contact', function () {
     return view('contact');
-})->name('contact');
+});
+
 
 // ---------------- AUTH ROUTES ----------------
 Route::middleware('auth')->group(function () {
