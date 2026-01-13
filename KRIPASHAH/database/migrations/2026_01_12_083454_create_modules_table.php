@@ -13,8 +13,9 @@ return new class extends Migration
     {
        Schema::create('modules', function (Blueprint $table) {
     $table->id();
-    $table->string('module_name');
-    $table->string('module_code')->unique();
+    $table->string('module_name');// keep your original name
+    $table->string('module_code')->unique();// keep your original code
+    $table->boolean('available')->default(true); // NEW column for availability
     $table->timestamps();
 });
 
