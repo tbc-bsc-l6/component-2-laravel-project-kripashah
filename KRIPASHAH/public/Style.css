@@ -42,20 +42,107 @@
 }
 
 
-
-
-
-/* About Page Specific Styles */
-.hero-image img {
-    border-radius: 1.5rem;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    font-family: 'Segoe UI', sans-serif;
 }
 
-/* Team images rounded */
-.w-48.h-48 {
-    width: 12rem;
-    height: 12rem;
+.edu-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.edu-card {
+    background: #fff;
+    width: 100%;
+    max-width: 720px;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+}
+
+.edu-card h1 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.edu-card p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.edu-form .row {
+    display: flex;
+    gap: 20px;
+}
+
+.edu-form .field {
+    flex: 1;
+    margin-bottom: 18px;
+}
+
+.edu-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+}
+
+.edu-form input,
+.edu-form select,
+.edu-form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.edu-form input:focus,
+.edu-form select:focus,
+.edu-form textarea:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102,126,234,0.2);
+    outline: none;
+}
+
+.edu-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.edu-btn:hover {
+    opacity: 0.9;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .edu-form .row {
+        flex-direction: column;
+    }
+}
+
+
+
+
+
+
+
+
+
 
 
 
