@@ -31,12 +31,19 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    // <<< Add this function BELOW casts() and ABOVE the closing class bracket >>>
+    // Student modules
     public function modules()
     {
         return $this->belongsToMany(Module::class)
-                    ->withPivot('status', 'completed_at')
+                    ->withPivot('status','enrolled_at','completed_at')
                     ->withTimestamps();
     }
+
+    // Can student enroll in more modules?
+    public function canEnroll()
+    {
+        return $this->modules()->count() < 4;
+    }
 }
+
+    

@@ -16,8 +16,11 @@ return new class extends Migration
         $table->foreignId('user_id')->constrained()->cascadeOnDelete();
         $table->foreignId('module_id')->constrained()->cascadeOnDelete();
         $table->enum('status', ['PASS', 'FAIL'])->nullable();
+        $table->timestamp('enrolled_at')->useCurrent();
         $table->timestamp('completed_at')->nullable();
         $table->timestamps();
+
+        $table->unique(['user_id','module_id']); // prevent duplicate enrollment
         });
     }
 

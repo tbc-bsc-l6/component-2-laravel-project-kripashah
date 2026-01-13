@@ -72,3 +72,23 @@ Route::middleware(['auth','teacher'])->prefix('teacher')->group(function () {
     // Set PASS/FAIL for a student
     Route::post('/modules/{module}/students/{student}/grade', [TeacherController::class,'setGrade'])->name('teacher.module.student.grade');
 });
+
+Route::middleware(['auth','student'])->prefix('student')->group(function () {
+
+    Route::get('/dashboard', [StudentController::class,'dashboard'])
+        ->name('student.dashboard');
+
+    Route::get('/modules', [StudentController::class,'availableModules'])
+        ->name('student.modules');
+
+    Route::post('/enrol/{id}', [StudentController::class,'enrol'])
+        ->name('student.enrol');
+
+    Route::get('/history', [StudentController::class,'history'])
+        ->name('student.history');
+});
+// Student routes
+Route::middleware(['auth','student'])->prefix('student')->group(function () {
+    Route::get('/dashboard', [StudentController::class,'dashboard'])->name('student.dashboard');
+    Route::post('/enroll/{module}', [StudentController::class,'enroll'])->name('student.enroll');
+});
