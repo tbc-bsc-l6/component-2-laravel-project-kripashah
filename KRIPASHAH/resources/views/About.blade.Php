@@ -39,11 +39,7 @@
     </section>
 </br></br></br>
     <!-- Our Story -->
-    <section class="container py-16">
-        <div class="text-center max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Our Story</h2>
-            <p class="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-                EduAdmin was born from the real challenges faced by teachers and school administrators. We saw outdated systems slowing down daily operations and decided to build something better — a clean, intuitive platform that saves time and lets educators focus on what matters most: teaching and learning.
+     EduAdmin was born from the real challenges faced by teachers and school administrators. We saw outdated systems slowing down daily operations and decided to build something better — a clean, intuitive platform that saves time and lets educators focus on what matters most: teaching and learning.
             </p>
         </div>
     </section></br></br>
