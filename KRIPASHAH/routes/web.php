@@ -1,11 +1,12 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\StudentController;
+use Illuminate\Support\Facades\Route;
 
-// Public routes
+// ---------------- PUBLIC ROUTES ----------------
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -18,7 +19,7 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-// Auth routes
+// ---------------- AUTH ROUTES ----------------
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -31,64 +32,32 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// ------------------- ADMIN ROUTES -------------------
+// ---------------- ADMIN ROUTES ----------------
 Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
-
-    // Dashboard
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-
-    // Modules
     Route::get('/modules', [AdminController::class, 'modules'])->name('admin.modules');
     Route::post('/modules', [AdminController::class, 'storeModule'])->name('admin.modules.store');
     Route::get('/modules/toggle/{id}', [AdminController::class, 'toggleModule'])->name('admin.modules.toggle');
-
-    // Teachers
     Route::get('/teachers', [AdminController::class, 'teachers'])->name('admin.teachers');
     Route::post('/teachers', [AdminController::class, 'storeTeacher'])->name('admin.teachers.store');
     Route::delete('/teachers/{id}', [AdminController::class, 'destroyTeacher'])->name('admin.teachers.destroy');
-
-    // Assign teacher to module
     Route::post('/assign-teacher', [AdminController::class, 'assignTeacher'])->name('admin.assign.teacher');
-
-    // Remove student from module
     Route::delete('/remove-student/{user}/{module}', [AdminController::class, 'removeStudent'])->name('admin.remove.student');
-
-    // Change user role
     Route::post('/user/{id}/role', [AdminController::class, 'changeRole'])->name('admin.user.role');
 });
 
-// ------------------- TEACHER ROUTES -------------------
+// ---------------- TEACHER ROUTES ----------------
 Route::middleware(['auth','teacher'])->prefix('teacher')->group(function () {
-
-    // Dashboard
     Route::get('/dashboard', [TeacherController::class,'dashboard'])->name('teacher.dashboard');
-
-    // Modules assigned to teacher
     Route::get('/modules', [TeacherController::class,'modules'])->name('teacher.modules');
-
-    // Students in a module
     Route::get('/modules/{module}/students', [TeacherController::class,'students'])->name('teacher.module.students');
-
-    // Set PASS/FAIL for a student
     Route::post('/modules/{module}/students/{student}/grade', [TeacherController::class,'setGrade'])->name('teacher.module.student.grade');
 });
 
-Route::middleware(['auth','student'])->prefix('student')->group(function () {
-
-    Route::get('/dashboard', [StudentController::class,'dashboard'])
-        ->name('student.dashboard');
-
-    Route::get('/modules', [StudentController::class,'availableModules'])
-        ->name('student.modules');
-
-    Route::post('/enrol/{id}', [StudentController::class,'enrol'])
-        ->name('student.enrol');
-
-    Route::get('/history', [StudentController::class,'history'])
-        ->name('student.history');
-});
-// Student routes
+// ---------------- STUDENT ROUTES ----------------
 Route::middleware(['auth','student'])->prefix('student')->group(function () {
     Route::get('/dashboard', [StudentController::class,'dashboard'])->name('student.dashboard');
+    Route::get('/modules', [StudentController::class,'availableModules'])->name('student.modules');
     Route::post('/enroll/{module}', [StudentController::class,'enroll'])->name('student.enroll');
+    Route::get('/history', [StudentController::class,'history'])->name('student.history');
 });
